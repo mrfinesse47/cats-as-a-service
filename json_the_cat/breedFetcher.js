@@ -8,14 +8,14 @@ const fetchBreedDescription = (breedName, callback) => {
       // console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
       //console.log("body:", body);
       if (error) {
-        callback(error, []);
+        callback(error, null);
       } else {
         const data = JSON.parse(body);
         // console.log(data);
         if (data[0]) {
-          callback(false, data[0].description);
+          callback(null, data[0].description);
         } else {
-          callback("breed not found", []);
+          callback("breed not found", null);
           //  console.log("breed not found");
         }
       }
